@@ -1,10 +1,11 @@
 import 'babel-polyfill'
 import chai from 'chai'
 import powerString from './powerString/powerString.js'
+import bac from './bullsAndCows/bullsAndCows.js'
 
 var expect = chai.expect;
 
-describe("Power string", () => {
+xdescribe("Power string", () => {
   it("Should work for values under max int", () => {
     expect('' + Math.pow(2, 2)).to.equal(powerString('2', '2'));
     expect('' + Math.pow(12, 12)).to.equal(powerString('12', '12'));
@@ -15,5 +16,14 @@ describe("Power string", () => {
 
   it("Should work for values above max int", () => {
     expect('1000000000000').to.equal(powerString('1000000', '2'));
+  });
+});
+
+describe("Bulls and cows", () => {
+  it("Should return the proper value for all guesses", () => {
+    expect(bac('1023', '0231')).to.equal('0A4B');
+    expect(bac('1023', '9876')).to.equal('0A0B');
+    expect(bac('1111', '1110')).to.equal('3A0B');
+    expect(bac('1112', '1211')).to.equal('2A2B');
   });
 });
